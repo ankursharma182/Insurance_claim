@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Insurer</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet" />
+
+    <style>
+        
+        #MiniLeftNav {
+            list-style: none;
+            margin-left: 20px;
+            padding: 0;
+            width: 30px;
+            transition: width 0.3s ease;
+            border: none;
+
+        }
+
+        #layoutSidenav_nav {
+            width: 80px;
+            overflow-y: visible;
+            height: 100vh;
+            position: fixed;
+            background-color: #212529;
+            padding: 0px;
+           
+        }
+
+        #layoutSidenav_nav::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #layoutSidenav_nav::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 4px;
+        }
+
+        #layoutSidenav_nav::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+
+        #MiniLeftNav li {
+            margin: 20px 0;
+            padding: 0;
+            width: 48px;
+        }
+
+        #MiniLeftNav li a {
+            display: block;
+            padding: 7px;
+            position: relative;
+            border: 1px #fff;
+            text-decoration: none;
+        }
+
+        .icon {
+            height: 20px;
+        }
+
+
+        #MiniLeftNav span {
+            font-family: 'Raleway', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: absolute;
+            bottom: 0;
+            left: 50px;
+            line-height: 38px;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #3d4f0c;
+            transition: width 0.3s ease, padding 0.3s ease;
+        }
+         #MiniLeftNav a:hover span {
+            width: auto;
+            padding: 0 30px;
+            background-color: rgba(31, 22, 22, 0.813);
+            color: white;
+        }
+        #sidenavAccordion {
+            padding: 0;
+        }
+        .sb-sidenav-menu {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+                 }
+        #MiniLeftNav a:hover i {
+            font-size: 1rem;
+        }
+        #MiniLeftNav .nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 5px;
+        }
+        #MiniLeftNav .nav-link .icon {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        #MiniLeftNav i {
+            transition: font-size 0.3s ease;
+        }
+        #MiniLeftNav a:hover {
+            text-decoration: none;
+        }
+        #MiniLeftNav .nav-item {
+            margin: 0;
+            padding: 5px 0;
+            text-align: center;
+        }
+        #MiniLeftNav:hover {
+            width: 250px;
+        }
+        .hidden {
+            display: none;
+        }
+
+        .form-container {
+            max-width: 1600px;
+            margin: 100px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="file"],
+        input[type="text"],
+        input[type="email"],
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body class="sb-nav-fixed">
+    <div>
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <a href="#" class="brand-link navbar-brand ps-3">
+                <img src="./assets/img/logo.png" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">Insurance Buddy</span>
+            </a>
+
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            </form>
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i> <span
+                            id="userName">Neeraj Bhatija</span></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Profile</a></li>
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav" style="margin-top: 60px;">
+            <div id="layoutSidenav_nav" style="width:80px">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="width:80px">
+                    <div class="sb-sidenav-menu" style="overflow-y:visible">
+                        <ul id="MiniLeftNav" class="nav">
+                            <li class="nav-item">
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="case-listing.html">
+                                    <i class="fas fa-file-alt icon"></i>
+                                    <span class="nav-text">Case Listing</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="new-view-case.html">
+                                    <i class="fas fa-eye" style="height: 20px;"></i>
+                                    <span class="nav-text">View Case</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="claim-details.html">
+                                    <i class="fas fa-clipboard-list icon"></i>
+                                    <span class="nav-text">Claim Details</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="insurer.html">
+                                    <i class="fas fa-briefcase icon"></i>
+                                    <span class="nav-text">Insurer</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="registration-certificate.html">
+                                    <i class="fas fa-certificate icon"></i>
+                                    <span class="nav-text">Registration Certificate</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="policy.html">
+                                    <i class="fas fa-book icon"></i>
+                                    <span class="nav-text">Policy</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="driving-license.html">
+                                    <i class="fas fa-id-card icon"></i>
+                                    <span class="nav-text">Driving License</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="documents.html">
+                                    <i class="fas fa-folder-open icon"></i>
+                                    <span class="nav-text">Document</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="kyc-document.html">
+                                    <i class="fas fa-id-badge icon"></i>
+                                    <span class="nav-text">KYC Document</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="repairer-information.html">
+                                    <i class="fas fa-cogs icon"></i>
+                                    <span class="nav-text">Repairer Information</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="communication.html">
+                                    <i class="fas fa-comment-alt icon"></i>
+                                    <span class="nav-text">Communication</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="assessment-report.html">
+                                    <i class="fas fa-file-medical icon"></i>
+                                    <span class="nav-text">Assessment Report</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="uploadDocument.html">
+                                    <i class="fas fa-file-medical icon"></i>
+                                    <span class="nav-text">Upload Document</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <main>
+            <div class="form-container" style="width: 100%;"> <!-- Adjust width as needed -->
+                <h2>Insurance Claim Document Upload</h2>
+                <div id="document-section">
+                    <label for="document-type">Select Document Type:</label>
+                    <select id="document-type" class="form-control">
+                        <option value="">-- Select Document Type --</option>
+                        <option value="aadhaar">Aadhaar Card</option>
+                        <option value="pan">PAN Card</option>
+                        <option value="license">Driving License</option>
+                        <option value="RC">Registration Certificate</option>
+
+                    </select>
+                </div>
+                <div id="aadhaar-fields" class="document-fields hidden">
+                    <div>
+                        <label for="aadhaar-number">Aadhaar Number:</label>
+                        <input type="text" id="aadhaar-number" class="form-control" placeholder="Enter Aadhaar Number">
+                    </div>
+                    <div>
+                        <label for="aadhaar-mobile">Mobile Number:</label>
+                        <input type="text" id="aadhaar-mobile" class="form-control" placeholder="Enter Mobile Number">
+                    </div>
+                    <div>
+                        <label for="aadhaar-email">Email Address:</label>
+                        <input type="email" id="aadhaar-email" class="form-control" placeholder="Enter Email Address">
+                    </div>
+                    <div>
+                        <label for="aadhaar-address">Address:</label>
+                        <input type="text" id="aadhaar-address" class="form-control" placeholder="Enter Address">
+                    </div>
+                    <div>
+                        <label for="aadhaar-dob">Date of Birth:</label>
+                        <input type="date" id="aadhaar-dob" class="form-control">
+                    </div>
+                    <div>
+                        <label for="aadhaar-gender">Gender:</label>
+                        <select id="aadhaar-gender" class="form-control">
+                            <option value="">-- Select Gender --</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="Aadhaar">Upload Aadhaar Card Photo:</label>
+                        <input type="file" id="Aadhaar-photo" class="form-control">
+                    </div>
+                </div>
+                <div id="pan-fields" class="document-fields hidden">
+                    <div>
+                        <label for="pan-number">PAN Number:</label>
+                        <input type="text" id="pan-number" class="form-control" placeholder="Enter PAN Number" required>
+                    </div>
+                    <div>
+                        <label for="pan-full-name">Full Name (as per PAN card):</label>
+                        <input type="text" id="pan-full-name" class="form-control" placeholder="Enter Full Name" required>
+                    </div>
+                    <div>
+                        <label for="pan-dob">Date of Birth:</label>
+                        <input type="date" id="pan-dob" class="form-control" required>
+                    </div>
+                    <div>
+                        <label for="pan-fathers-name">Father's Name:</label>
+                        <input type="text" id="pan-fathers-name" class="form-control" placeholder="Enter Father's Name" required>
+                    </div>
+                    <div>
+                        <label for="pan-phone">Phone Number:</label>
+                        <input type="text" id="pan-phone" class="form-control" placeholder="Enter Phone Number" required>
+                    </div>
+                    <div>
+                        <label for="pan-address">Address:</label>
+                        <input type="text" id="pan-address" class="form-control" placeholder="Enter Address" required>
+                    </div>
+                    <div>
+                        <label for="PAN">Upload PAN Card Photo:</label>
+                        <input type="file" id="PAN-photo" class="form-control">
+                    </div>
+                </div>
+
+                <div id="vrc-fields" class="document-fields hidden">
+                    <div>
+                        <label for="vrc-number">VRC Number:</label>
+                        <input type="text" id="vrc-number" class="form-control"
+                            placeholder="Enter Vehicle Registration Certificate Number" required>
+                    </div>
+                    <div>
+                        <label for="vrc-owner-name">Owner's Name:</label>
+                        <input type="text" id="vrc-owner-name" class="form-control" placeholder="Enter Owner's Name" required>
+                    </div>
+                    <div>
+                        <label for="vrc-vehicle-model">Vehicle Model:</label>
+                        <input type="text" id="vrc-vehicle-model" class="form-control" placeholder="Enter Vehicle Model" required>
+                    </div>
+                    <div>
+                        <label for="vrc-vehicle-make">Vehicle Make (Brand):</label>
+                        <input type="text" id="vrc-vehicle-make" class="form-control"
+                            placeholder="Enter Vehicle Make (Brand)" required>
+                    </div>
+                    <div>
+                        <label for="vrc-vehicle-color">Vehicle Color:</label>
+                        <input type="text" id="vrc-vehicle-color" class="form-control" placeholder="Enter Vehicle Color" required>
+                    </div>
+                    <div>
+                        <label for="vrc-registration-date">Registration Date:</label>
+                        <input type="date" id="vrc-registration-date" class="form-control" required>
+                    </div>
+                    <div>
+                        <label for="vrc-address">Owner's Address:</label>
+                        <input type="text" id="vrc-address" class="form-control" placeholder="Enter Owner's Address" required>
+                    </div>
+                    <div>
+                        <label for="vrc-phone">Phone Number:</label>
+                        <input type="text" id="vrc-phone" class="form-control" placeholder="Enter Phone Number" required>
+                    </div>
+                    <div>
+                        <label for="vrc-email">Email Address:</label>
+                        <input type="email" id="vrc-email" class="form-control" placeholder="Enter Email Address" required>
+                    </div>
+                    <div>
+                        <label for="vrc-vehicle-type">Vehicle Type (e.g., Sedan, SUV):</label>
+                        <input type="text" id="vrc-vehicle-type" class="form-control" placeholder="Enter Vehicle Type" required>
+                    </div>
+                    <div>
+                        <label for="vrc-vehicle-registration-photo">Upload Vehicle Registration Certificate
+                            Photo:</label>
+                        <input type="file" id="vrc-vehicle-registration-photo" class="form-control">
+                    </div>
+                </div>
+                <div id="license-fields" class="document-fields hidden">
+                    <div>
+                        <label for="license-number">License Number:</label>
+                        <input type="text" id="license-number" class="form-control" placeholder="Enter License Number" required>
+                    </div>
+                    <div>
+                        <label for="license-holder-name">Full Name (as per License):</label>
+                        <input type="text" id="license-holder-name" class="form-control" placeholder="Enter Full Name" required>
+                    </div>
+                    <div>
+                        <label for="license-dob">Date of Birth:</label>
+                        <input type="date" id="license-dob" class="form-control" required>
+                    </div>
+                    <div>
+                        <label for="license-address">Address:</label>
+                        <input type="text" id="license-address" class="form-control" placeholder="Enter Address" required>
+                    </div>
+                    <div>
+                        <label for="license-issue-date">License Issue Date:</label>
+                        <input type="date" id="license-issue-date" class="form-control" required>
+                    </div>
+                    <div>
+                        <label for="license-expiry-date">License Expiry Date:</label>
+                        <input type="date" id="license-expiry-date" class="form-control" required>
+                    </div>
+                    <div>
+                        <label for="license-vehicle-type">Vehicle Type:</label>
+                        <input type="text" id="license-vehicle-type" class="form-control"
+                            placeholder="Enter Vehicle Type (e.g., Car, Motorcycle)" required>
+                    </div>
+                    <div>
+                        <label for="license-phone">Phone Number:</label>
+                        <input type="text" id="license-phone" class="form-control" placeholder="Enter Phone Number" required>
+                    </div>
+                    <div>
+                        <label for="license-email">Email Address:</label>
+                        <input type="email" id="license-email" class="form-control" placeholder="Enter Email Address" required>
+                    </div>
+                    <div>
+                        <label for="license">Upload License Photo:</label>
+                        <input type="file" id="license-photo" class="form-control">
+                    </div>
+                </div>
+                <form id="document-upload-form" class="hidden">
+                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                </form>
+            </div>
+    </div>
+    </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.document-fields').addClass('hidden');
+            $('#document-type').on('change', function () {
+                const selectedValue = $(this).val();
+                $('.document-fields').addClass('hidden');
+
+                // Show specific fields based on the selected value
+                if (selectedValue === 'aadhaar') {
+                    $('#aadhaar-fields').removeClass('hidden');
+                } else if (selectedValue === 'pan') {
+                    $('#pan-fields').removeClass('hidden');
+                } else if (selectedValue === 'license') {
+                    $('#license-fields').removeClass('hidden');
+                }
+                else if (selectedValue === 'RC') {
+                    $('#vrc-fields').removeClass('hidden');
+                }
+                if (selectedValue) {
+                    $('#document-upload-form').removeClass('hidden');
+                } else {
+                    $('#document-upload-form').addClass('hidden');
+                }
+            });
+            $('#document-upload-form').on('submit', function (e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                // Simulate success message
+                alert('Form submitted successfully!');
+                console.log('Form data:', Array.from(formData.entries()));
+
+            });
+        });
+
+    </script>
+</body>
+
+</html>

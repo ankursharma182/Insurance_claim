@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Insurer</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet" />
+
+  <style>
+    /* Initial style for the icon and text */
+    /* Initial style for the sidebar */
+    /* Initial style for the sidebar */
+    /* Sidebar styling */
+    #MiniLeftNav {
+      list-style: none;
+      margin-left: 20px;
+      padding: 0;
+      width: 30px;
+      /* Initially narrow width */
+      transition: width 0.3s ease;
+      /* Smooth transition for width change */
+      border: none;
+
+    }
+
+    #layoutSidenav_nav {
+      width: 80px;
+      overflow-y: visible;
+      /* Enables vertical scrolling */
+      height: 100vh;
+      /* Ensures it takes full viewport height */
+      position: fixed;
+      background-color: #212529;
+      padding: 0px;
+      /* Set a consistent background color */
+      /* Keeps the sidebar in place while scrolling the main content */
+    }
+
+    #layoutSidenav_nav::-webkit-scrollbar {
+      width: 8px;
+      /* Customize scrollbar width */
+    }
+
+    #layoutSidenav_nav::-webkit-scrollbar-thumb {
+      background-color: #888;
+      /* Customize scrollbar thumb color */
+      border-radius: 4px;
+      /* Rounded scrollbar thumb */
+    }
+
+    #layoutSidenav_nav::-webkit-scrollbar-thumb:hover {
+      background-color: #555;
+      /* Darker thumb color on hover */
+    }
+
+    #MiniLeftNav li {
+      margin: 20px 0;
+      padding: 0;
+      width: 48px;
+      /* Adjust the width for the icons */
+    }
+
+    /* Style for the anchor tags */
+    #MiniLeftNav li a {
+      display: block;
+      padding: 7px;
+      position: relative;
+      border: 1px #fff;
+      text-decoration: none;
+    }
+
+    .icon {
+      height: 20px;
+    }
+
+    /* Styling for the text span */
+    #MiniLeftNav span {
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      position: absolute;
+      bottom: 0;
+      left: 50px;
+      /* Adjust position of text */
+      line-height: 38px;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 0;
+      /* Initially hide the text */
+      padding: 0;
+      background-color: #fff;
+      color: #3d4f0c;
+      transition: width 0.3s ease, padding 0.3s ease;
+      /* Smooth transition */
+    }
+
+    /* Hover effect */
+    #MiniLeftNav a:hover span {
+      width: auto;
+      /* Show the text */
+      padding: 0 30px;
+      /* Add some padding */
+      background-color: rgba(31, 22, 22, 0.813);
+      color: white;
+    }
+
+    #sidenavAccordion {
+      padding: 0;
+      /* Remove any padding */
+    }
+
+    .sb-sidenav-menu {
+      margin: 0;
+      /* Remove margin */
+      padding: 0;
+      /* Remove padding */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      /* Align items to the top */
+    }
+
+    /* Hover effect for icon */
+    #MiniLeftNav a:hover {
+      /* background-color: #f1f1f1;  */
+      /* Optional: Change background color of icon on hover */
+    }
+
+    /* Optional: Enlarge icon on hover */
+    #MiniLeftNav a:hover i {
+      font-size: 1rem;
+      /* Enlarge icon */
+    }
+
+    #MiniLeftNav .nav-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 5px;
+      /* Adjust padding around the link */
+    }
+
+    #MiniLeftNav .nav-link .icon {
+      font-size: 20px;
+      /* Adjust icon size */
+      margin-bottom: 5px;
+      /* Reduce spacing between icon and text */
+    }
+
+    /* Optional: Smooth transition for the icon */
+    #MiniLeftNav i {
+      transition: font-size 0.3s ease;
+    }
+
+    /* Hover effect for anchor tag */
+    #MiniLeftNav a:hover {
+      text-decoration: none;
+    }
+
+    #MiniLeftNav .nav-item {
+      margin: 0;
+      /* Remove margin for list items */
+      padding: 5px 0;
+      /* Add consistent padding */
+      text-align: center;
+      /* Center icons horizontally */
+    }
+
+    /* Expanding the sidebar on hover */
+    #MiniLeftNav:hover {
+      width: 250px;
+      /* Expand the sidebar when hovered */
+    }
+  </style>
+
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="sb-nav-fixed">
+  <div>
+    <div id="layoutSidenav_content" style=" margin-left: 100px;">
+      <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <!-- <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a> -->
+        <a href="#" class="brand-link navbar-brand ps-3">
+          <img src="././assets/img/logo.png" class="brand-image img-circle elevation-3" style="opacity: .8">
+          <span class="brand-text font-weight-light">Insurance Buddy</span>
+        </a>
+
+
+
+        <!-- Sidebar Toggle-->
+        <!-- <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+            class="fas fa-bars"></i></button> -->
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+          <div class="input-group">
+            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
+              aria-describedby="btnNavbarSearch" />
+            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+          </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#!">Settings</a></li>
+              <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="#!">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div id="layoutSidenav" style="margin-top: 60px;">
+        <div id="layoutSidenav_nav" style="width:80px">
+          <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="width:80px">
+            <div class="sb-sidenav-menu" style="overflow-y:visible">
+              <ul id="MiniLeftNav" class="nav">
+                <li class="nav-item">
+                  <!-- <div class="user-panel mt-2 pb-3 mb-3 d-flex">
+                            <div class="image">
+                               <img src="././assets/img/user.jpg" class="img-circle elevation-2">
+                            </div>
+                            <div class="info">
+                               <a href="#" class="d-block">Neeraj Bhatija</a>
+                            </div>
+                         </div> -->
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="case-listing.html">
+                    <i class="fas fa-file-alt icon"></i>
+                    <span class="nav-text">Case Listing</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="new-view-case.html">
+                    <i class="fas fa-eye" style="height: 20px;"></i>
+                    <span class="nav-text">View Case</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="claim-details.html">
+                    <i class="fas fa-clipboard-list icon"></i>
+                    <span class="nav-text">Claim Details</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="insurer.html">
+                    <i class="fas fa-briefcase icon"></i>
+                    <span class="nav-text">Insurer</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="registration-certificate.html">
+                    <i class="fas fa-certificate icon"></i>
+                    <span class="nav-text">Registration Certificate</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="policy.html">
+                    <i class="fas fa-book icon"></i>
+                    <span class="nav-text">Policy</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="driving-license.html">
+                    <i class="fas fa-id-card icon"></i>
+                    <span class="nav-text">Driving License</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="documents.html">
+                    <i class="fas fa-folder-open icon"></i>
+                    <span class="nav-text">Document</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="kyc-document.html">
+                    <i class="fas fa-id-badge icon"></i>
+                    <span class="nav-text">KYC Document</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="repairer-information.html">
+                    <i class="fas fa-cogs icon"></i>
+                    <span class="nav-text">Repairer Information</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="communication.html">
+                    <i class="fas fa-comment-alt icon"></i>
+                    <span class="nav-text">Communication</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="assessment-report.html">
+                    <i class="fas fa-file-medical icon"></i>
+                    <span class="nav-text">Assessment Report</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <main>
+        <div class="container-fluid px-4 mt-4">
+          <!-- Header Section -->
+          <div class="row mt-4">
+            <div class="col-12 d-flex justify-content-between align-items-center">
+              <h3 class="mr-3">AI Assessment Report</h3>
+              <div>
+                <button type="button" class="btn btn-primary m-1">ILA</button>
+                <button type="button" class="btn btn-primary m-1">FLA</button>
+                <button type="button" class="btn btn-primary m-1">Save & Approve FLA</button>
+                <button type="button" class="btn btn-primary m-1">Final Survey Report</button>
+                <button type="button" class="btn btn-primary m-1">Invoice</button>
+                <button type="button" class="btn btn-primary m-1">Download Excel</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Policy and Claim Details -->
+          <div class="row mt-4">
+            <div class="col-sm-6 col-12">
+              <div class="card card-body">
+                <h5>Policy Details</h5>
+                <p><strong>Name:</strong> MITHILESH SHAHAPURKAR</p>
+                <p><strong>Policy Number:</strong> 211200/31/2024/296862</p>
+                <p><strong>Policy Period:</strong> 17-11-2023 to 16-11-2024</p>
+                <p><strong>Date of Loss:</strong> 31-03-2024</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-12">
+              <div class="card card-body">
+                <h5>Claim Details</h5>
+                <p><strong>Claim Number:</strong> 160011/31/2025/00030015</p>
+                <p><strong>Reg. Number:</strong> MH14DN7879</p>
+                <p><strong>Reg. Date:</strong> 27-09-2012</p>
+                <p><strong>Is ADDON Cover Opted?:</strong> No</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Additional and Depreciation Details -->
+          <div class="row mt-4">
+            <div class="col-sm-6 col-12">
+              <div class="card card-body">
+                <h5>Additional</h5>
+                <label for="part-name">Part Name</label>
+                <input type="text" id="part-name" class="form-control mb-2" placeholder="Part Name" />
+                <label for="decision">Decision</label>
+                <select id="decision" class="form-control mb-2">
+                  <option value="">Select</option>
+                </select>
+                <label for="material">Material</label>
+                <select id="material" class="form-control mb-2">
+                  <option value="">Select</option>
+                </select>
+                <button type="button" class="btn btn-success mt-2">Add</button>
+              </div>
+            </div>
+            <div class="col-sm-6 col-12">
+              <div class="card card-body">
+                <h5>Depreciation</h5>
+                <label for="age-of-vehicle">Select Age of Vehicle Below</label>
+                <select id="age-of-vehicle" class="form-control mb-2">
+                  <option value=">10">Exceeding 10 years</option>
+                  <option value="5-10">5-10 years</option>
+                  <option value="<5">Less than 5 years</option>
+                </select>
+                <p><strong>Age of Depreciation on Other Parts:</strong> 50%</p>
+              </div>
+            </div>
+          </div>
+          <!-- Part List Table -->
+          <div class="card p-3 mb-4">
+            <h5>Parts List</h5>
+            <table class="table table-bordered">
+              <thead class="thead-light">
+                <tr>
+                  <th>#</th>
+                  <th>Bill Seq.</th>
+                  <th>Decision</th>
+                  <th>Material</th>
+                  <th>Part Name</th>
+                  <th>Damage Remarks</th>
+                  <th>Allow/Disallow</th>
+                  <th>Parts Price</th>
+                  <th>Salvage (%)</th>
+                  <th>Salvage</th>
+                  <th>CGST</th>
+                  <th>SGST</th>
+                  <th>IGST</th>
+                  <th>Deprn. %</th>
+                  <th>Net Amt.</th>
+                  <th>CGST %</th>
+                  <th>SGST %</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><input type="text" class="form-control" placeholder="Bill Seq." /></td>
+                  <td>
+                    <select class="form-control">
+                      <option>Replace</option>
+                      <option>Repair</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select class="form-control">
+                      <option>G</option>
+                      <option>P</option>
+                    </select>
+                  </td>
+                  <td>Front Windshield</td>
+                  <td><input type="text" class="form-control" placeholder="Damage Remarks" /></td>
+                  <td><input type="text" class="form-control" placeholder="Allow/Disallow" /></td>
+                  <td>4882.81</td>
+                  <td>0</td>
+                  <td>0.00</td>
+                  <td>683.50</td>
+                  <td>683.50</td>
+                  <td>0.00</td>
+                  <td>0</td>
+                  <td>4882.81</td>
+                  <td>14</td>
+                  <td>9</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td><input type="text" class="form-control" placeholder="Bill Seq." /></td>
+                  <td>
+                    <select class="form-control">
+                      <option>Replace</option>
+                      <option>Repair</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select class="form-control">
+                      <option>G</option>
+                      <option>P</option>
+                    </select>
+                  </td>
+                  <td>Sealant</td>
+                  <td><input type="text" class="form-control" placeholder="Damage Remarks" /></td>
+                  <td><input type="text" class="form-control" placeholder="Allow/Disallow" /></td>
+                  <td>728.81</td>
+                  <td>0</td>
+                  <td>65.59</td>
+                  <td>65.59</td>
+                  <td>65.59</td>
+                  <td>0.00</td>
+                  <td>50</td>
+                  <td>364.41</td>
+                  <td>9</td>
+                  <td>9</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="7" class="text-right"><strong>Total:</strong></td>
+                  <td>5611.62</td>
+                  <td>0</td>
+                  <td>749.18</td>
+                  <td>749.18</td>
+                  <td>749.18</td>
+                  <td>0.00</td>
+                  <td></td>
+                  <td>5247.22</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <!-- Parts and GST Calculation Section -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card p-3">
+                <h5>Parts</h5>
+                <table class="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <td>Parts @LIST</td>
+                      <td>5611.62</td>
+                    </tr>
+                    <tr>
+                      <td>LESS: DEPRN.</td>
+                      <td>-364.40</td>
+                    </tr>
+                    <tr>
+                      <td>NET PARTS AMOUNT</td>
+                      <td>5247.22</td>
+                    </tr>
+                    <tr>
+                      <td>CGST</td>
+                      <td>716.39</td>
+                    </tr>
+                    <tr>
+                      <td>SGST</td>
+                      <td>716.39</td>
+                    </tr>
+                    <tr>
+                      <td>IGST</td>
+                      <td>0.00</td>
+                    </tr>
+                    <tr>
+                      <td><strong>TOTAL PARTS AMOUNT</strong></td>
+                      <td><strong>6680.00</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="card p-3">
+                <h5>GST Calculation</h5>
+                <table class="table table-bordered">
+                  <thead class="thead-light">
+                    <tr>
+                      <th>GST Calculation</th>
+                      <th>Remove & Refit</th>
+                      <th>Repair</th>
+                      <th>Paint</th>
+                      <th>Total Labour</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Amount</td>
+                      <td>1200.00</td>
+                      <td>0.00</td>
+                      <td>0.00</td>
+                      <td>1200.00</td>
+                    </tr>
+                    <tr>
+                      <td>CGST</td>
+                      <td>
+                        <select class="form-control">
+                          <option>9%</option>
+                        </select>
+                      </td>
+                      <td>108.00</td>
+                      <td>108.00</td>
+                      <td>108.00</td>
+                    </tr>
+                    <tr>
+                      <td>SGST</td>
+                      <td>
+                        <select class="form-control">
+                          <option>9%</option>
+                        </select>
+                      </td>
+                      <td>108.00</td>
+                      <td>108.00</td>
+                      <td>108.00</td>
+                    </tr>
+                    <tr>
+                      <td>IGST</td>
+                      <td>
+                        <select class="form-control">
+                          <option>0%</option>
+                        </select>
+                      </td>
+                      <td>0.00</td>
+                      <td>0.00</td>
+                      <td>0.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Liability and Final Settlement -->
+          <div class="row mt-4">
+            <!-- Liability Section -->
+            <div class="col-sm-6 col-12">
+              <div class="card card-body">
+                <h5>Liability</h5>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Particulars</th>
+                      <th>Insurer's Liability</th>
+                      <th>Insured's Share</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Parts Assessed (C)</td>
+                      <td>6680.00</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td>Labour (Repair & R&R)</td>
+                      <td>1416.00</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td>Paint</td>
+                      <td>0.00</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td>Towing Charges</td>
+                      <td>0.00</td>
+                      <td>0.00</td>
+                    </tr>
+                    <tr>
+                      <td>Less: Compulsory Excess</td>
+                      <td>-2000.00</td>
+                      <td>2000.00</td>
+                    </tr>
+                    <tr>
+                      <td>Net Settlement</td>
+                      <td><strong>6096.00</strong></td>
+                      <td><strong>2430.00</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Final Settlement Section -->
+            <div class="col-sm-6 col-12">
+              <div class="card card-body">
+                <h5>Final Settlement</h5>
+                <p><strong>Settlement %age:</strong> 100%</p>
+                <p><strong>Amount - Non-Standard Deduction:</strong> -0.00</p>
+                <p class="bg-success text-white p-2"><strong>Final Claim Amount:</strong> ₹6096.00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+
+
+    </div>
+  </div>
+  <footer class="py-4 bg-light mt-auto" style="margin-left: 80px;">
+    <div class="container-fluid px-4">
+      <div class="d-flex align-items-center justify-content-between small">
+        <div class="text-muted">Copyright &copy; Insurance 2024</div>
+        <div>
+          <a href="#">Privacy Policy</a>
+          &middot;
+          <a href="#">Terms &amp; Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+  <script src="js/scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+    crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="js/datatables-simple-demo.js"></script>
+
+  <script>
+    //             new DataTable('#datatablesSimple', {
+    //     layout: {
+    //         topStart: {
+    //             buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+    //         }
+    //     }
+    // });
+  </script>
+</body>
+
+</html>

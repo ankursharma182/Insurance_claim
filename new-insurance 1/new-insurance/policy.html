@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+   <meta name="description" content="" />
+   <meta name="author" content="" />
+   <title>Policy Details</title>
+   <style>
+      /* Initial style for the icon and text */
+      /* Initial style for the sidebar */
+      /* Initial style for the sidebar */
+      /* Sidebar styling */
+      #MiniLeftNav {
+         list-style: none;
+         margin-left: 20px;
+         padding: 0;
+         width: 30px;
+         /* Initially narrow width */
+         transition: width 0.3s ease;
+         /* Smooth transition for width change */
+         border: none;
+
+      }
+
+      #layoutSidenav_nav {
+         width: 80px;
+         overflow-y: visible;
+         /* Enables vertical scrolling */
+         height: 100vh;
+         /* Ensures it takes full viewport height */
+         position: fixed;
+         background-color: #212529;
+         padding: 0px;
+         /* Set a consistent background color */
+         /* Keeps the sidebar in place while scrolling the main content */
+      }
+
+      #layoutSidenav_nav::-webkit-scrollbar {
+         width: 8px;
+         /* Customize scrollbar width */
+      }
+
+      #layoutSidenav_nav::-webkit-scrollbar-thumb {
+         background-color: #888;
+         /* Customize scrollbar thumb color */
+         border-radius: 4px;
+         /* Rounded scrollbar thumb */
+      }
+
+      #layoutSidenav_nav::-webkit-scrollbar-thumb:hover {
+         background-color: #555;
+         /* Darker thumb color on hover */
+      }
+
+      #MiniLeftNav li {
+         margin: 20px 0;
+         padding: 0;
+         width: 48px;
+         /* Adjust the width for the icons */
+      }
+
+      /* Style for the anchor tags */
+      #MiniLeftNav li a {
+         display: block;
+         padding: 7px;
+         position: relative;
+         border: 1px #fff;
+         text-decoration: none;
+      }
+
+      .icon {
+         height: 20px;
+      }
+
+      /* Styling for the text span */
+      #MiniLeftNav span {
+         font-family: 'Raleway', sans-serif;
+         font-size: 14px;
+         font-weight: 400;
+         letter-spacing: 1px;
+         text-transform: uppercase;
+         position: absolute;
+         bottom: 0;
+         left: 50px;
+         /* Adjust position of text */
+         line-height: 38px;
+         overflow: hidden;
+         white-space: nowrap;
+         width: 0;
+         /* Initially hide the text */
+         padding: 0;
+         background-color: #fff;
+         color: #3d4f0c;
+         transition: width 0.3s ease, padding 0.3s ease;
+         /* Smooth transition */
+      }
+
+      /* Hover effect */
+      #MiniLeftNav a:hover span {
+         width: auto;
+         /* Show the text */
+         padding: 0 30px;
+         /* Add some padding */
+         background-color: rgba(31, 22, 22, 0.813);
+         color: white;
+      }
+
+      #sidenavAccordion {
+         padding: 0;
+         /* Remove any padding */
+      }
+
+      .sb-sidenav-menu {
+         margin: 0;
+         /* Remove margin */
+         padding: 0;
+         /* Remove padding */
+         display: flex;
+         flex-direction: column;
+         justify-content: flex-start;
+         /* Align items to the top */
+      }
+
+      /* Hover effect for icon */
+      #MiniLeftNav a:hover {
+         /* background-color: #f1f1f1;  */
+         /* Optional: Change background color of icon on hover */
+      }
+
+      /* Optional: Enlarge icon on hover */
+      #MiniLeftNav a:hover i {
+         font-size: 1rem;
+         /* Enlarge icon */
+      }
+
+      #MiniLeftNav .nav-link {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         padding: 10px 5px;
+         /* Adjust padding around the link */
+      }
+
+      #MiniLeftNav .nav-link .icon {
+         font-size: 20px;
+         /* Adjust icon size */
+         margin-bottom: 5px;
+         /* Reduce spacing between icon and text */
+      }
+
+      /* Optional: Smooth transition for the icon */
+      #MiniLeftNav i {
+         transition: font-size 0.3s ease;
+      }
+
+      /* Hover effect for anchor tag */
+      #MiniLeftNav a:hover {
+         text-decoration: none;
+      }
+
+      #MiniLeftNav .nav-item {
+         margin: 0;
+         /* Remove margin for list items */
+         padding: 5px 0;
+         /* Add consistent padding */
+         text-align: center;
+         /* Center icons horizontally */
+      }
+
+      /* Expanding the sidebar on hover */
+      #MiniLeftNav:hover {
+         width: 250px;
+         /* Expand the sidebar when hovered */
+      }
+   </style>
+   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+   <link href="css/styles.css" rel="stylesheet" />
+
+
+
+   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="sb-nav-fixed">
+   <div>
+      <div id="layoutSidenav_content" style=" margin-left: 100px;">
+         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <!-- <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a> -->
+            <a href="#" class="brand-link navbar-brand ps-3">
+               <img src="././assets/img/logo.png" class="brand-image img-circle elevation-3" style="opacity: .8">
+               <span class="brand-text font-weight-light">Insurance Buddy</span>
+            </a>
+
+
+
+            <!-- Sidebar Toggle-->
+            <!-- <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                  class="fas fa-bars"></i></button> -->
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+               <div class="input-group">
+                  <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
+                     aria-describedby="btnNavbarSearch" />
+                  <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
+                        class="fas fa-search"></i></button>
+               </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                     data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                     <li><a class="dropdown-item" href="#!">Settings</a></li>
+                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                     <li>
+                        <hr class="dropdown-divider" />
+                     </li>
+                     <li><a class="dropdown-item" href="#!">Logout</a></li>
+                  </ul>
+               </li>
+            </ul>
+         </nav>
+         <div id="layoutSidenav" style="margin-top: 60px;">
+            <div id="layoutSidenav_nav" style="width:80px">
+               <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="width:80px">
+                  <div class="sb-sidenav-menu" style="overflow-y:visible">
+                     <ul id="MiniLeftNav" class="nav">
+                        <li class="nav-item">
+                           <!-- <div class="user-panel mt-2 pb-3 mb-3 d-flex">
+                           <div class="image">
+                              <img src="././assets/img/user.jpg" class="img-circle elevation-2">
+                           </div>
+                           <div class="info">
+                              <a href="#" class="d-block">Neeraj Bhatija</a>
+                           </div>
+                        </div> -->
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="case-listing.html">
+                              <i class="fas fa-file-alt icon"></i>
+                              <span class="nav-text">Case Listing</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="new-view-case.html">
+                              <i class="fas fa-eye" style="height: 20px;"></i>
+                              <span class="nav-text">View Case</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="claim-details.html">
+                              <i class="fas fa-clipboard-list icon"></i>
+                              <span class="nav-text">Claim Details</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="insurer.html">
+                              <i class="fas fa-briefcase icon"></i>
+                              <span class="nav-text">Insurer</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="registration-certificate.html">
+                              <i class="fas fa-certificate icon"></i>
+                              <span class="nav-text">Registration Certificate</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="policy.html">
+                              <i class="fas fa-book icon"></i>
+                              <span class="nav-text">Policy</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="driving-license.html">
+                              <i class="fas fa-id-card icon"></i>
+                              <span class="nav-text">Driving License</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="documents.html">
+                              <i class="fas fa-folder-open icon"></i>
+                              <span class="nav-text">Document</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="kyc-document.html">
+                              <i class="fas fa-id-badge icon"></i>
+                              <span class="nav-text">KYC Document</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="repairer-information.html">
+                              <i class="fas fa-cogs icon"></i>
+                              <span class="nav-text">Repairer Information</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="communication.html">
+                              <i class="fas fa-comment-alt icon"></i>
+                              <span class="nav-text">Communication</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="assessment-report.html">
+                              <i class="fas fa-file-medical icon"></i>
+                              <span class="nav-text">Assessment Report</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </nav>
+            </div>
+</div>
+            <main>
+               <div class="container-fluid px-4 mt-4">
+                  <div class="row mt-4">
+                     <div class="col-sm-8 col-12">
+                        <h3>Policy Information</h3>
+                     </div>
+                     <div class="col-sm-2 document-quantity">
+                        <ol>
+                           <li class="documenfile"> <button type="button" class="" data-bs-toggle="modal"
+                                 data-bs-target="#largeModal"> <i class="fas fa-file-alt"></i> 5/5</button> </li>
+                           <div class="modal" id="largeModal">
+                              <div class="modal-dialog modal-lg">
+                                 <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                       <h5>Policy Copy</h5>
+                                       <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body wusubmit-document">
+                                       <ol>
+                                          <li>1.</li>
+                                          <li class="wucheck-popup-icon"><i class="fa-regular fa-square-check"></i></li>
+                                          <li class=""><i class="fas fa-times-circle"></i></li>
+                                          <li class="wustop-popup-icon"><i class="fas fa-ban"></i></li>
+                                          <li>insured Name same as Policy (MITHILESH SHAHAPURKAR) & IC (MITHILESH
+                                             SHAHAPURKAR)</li>
+                                       </ol>
+                                       <ol>
+                                          <li>2.</li>
+                                          <li class="wucheck-popup-icon"><i class="fas fa-check-square"></i></li>
+                                          <li class=""><i class="fas fa-times-circle"></i></li>
+                                          <li class="wustop-popup-icon"><i class="fas fa-ban"></i></li>
+                                          <li>Complete address mentioned an Of lincluding PIN no) [PUNE]</li>
+                                       </ol>
+                                       <ol>
+                                          <li>3.</li>
+                                          <li class="wucheck-popup-icon"><i class="fas fa-check-square"></i></li>
+                                          <li class=""><i class="fas fa-times-circle"></i></li>
+                                          <li class="wustop-popup-icon"><i class="fas fa-ban"></i></li>
+                                          <li>Date of loss (31-03-20248:50) with intimation detalls</li>
+                                       </ol>
+                                       <ol>
+                                          <li>4.</li>
+                                          <li class=""><i class="fas fa-check-square"></i></li>
+                                          <li class="wuwrong-popup-icon"><i class="fas fa-times-circle"></i></li>
+                                          <li class="wustop-popup-icon"><i class="fas fa-ban"></i></li>
+                                          <li>Signature of insured</li>
+                                       </ol>
+                                       <ol>
+                                          <li>5.</li>
+                                          <li class=""><i class="fas fa-check-square"></i></li>
+                                          <li class=""><i class="fas fa-times-circle"></i></li>
+                                          <li class="wustop-popup-icon"><i class="fas fa-ban"></i></li>
+                                          <li>Stamp on Claim form if applicable</li>
+                                       </ol>
+                                    </div>
+                                    <div class="modal-footer">
+                                       <button type="button" class="btn btn-primary">Save</button>
+                                    </div>
+
+                                 </div>
+                              </div>
+                           </div>
+                           <li class="documentcheck"><a href="#"><i class="fas fa-check-circle"></i> 4</a></li>
+                           <li class="document-wrong"><a href="#"><i class="fas fa-times-circle"></i> 0</a></li>
+                           <li class="documen-stop"><a href="#"><i class="fas fa-ban"></i> 1</a></li>
+                        </ol>
+                     </div>
+
+                     <div class="col-sm-2 col-12 wumanage-claim">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                           Manage Claim Status
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal right fade" id="myModal" role="dialog">
+                           <div class="modal-dialog">
+                              <!-- Modal content-->
+                              <div class="modal-content">
+                                 <div class="modal-header">
+                                    <h4 class="modal-title">Manage Claim Status</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                 </div>
+                                 <div class="modal-body">
+                                    <div class="row">
+                                       <div class="col-sm-7 wuclaim-status">
+                                          <div class="wuinfo-card">
+                                             <h3>Case Closure <span>Latest</span></h3>
+                                             <p><i class="far fa-clock"></i> Apr 03,2024 03:10PM</p>
+                                             <h4>Status Changed</h4>
+                                             <h5>File Submission In Progress &nbsp; <i
+                                                   class="fas fa-long-arrow-alt-right"></i> &nbsp; <span>Case
+                                                   Settled</span></h5>
+                                             <h6><i class="fas fa-user-alt"></i> &nbsp;Bhushan Nagdeve &nbsp; <span><i
+                                                      class="fas fa-headphones-alt"></i> &nbsp;Bhushan Nagdeve</span>
+                                             </h6>
+                                          </div>
+                                          <div class="wuinfo-card mt-4">
+                                             <h3>Final Assessment</h3>
+                                             <p><i class="far fa-clock"></i> Apr 03,2024 03:10PM</p>
+                                             <h4>Status Changed</h4>
+                                             <h5>File Submission In Progress &nbsp; <i
+                                                   class="fas fa-long-arrow-alt-right"></i> &nbsp; <span>Case
+                                                   Settled</span></h5>
+                                             <h6><i class="fas fa-user-alt"></i> &nbsp;Bhushan Nagdeve &nbsp; <span><i
+                                                      class="fas fa-headphones-alt"></i> &nbsp;Bhushan Nagdeve</span>
+                                             </h6>
+                                          </div>
+                                          <div class="wuinfo-card mt-4">
+                                             <h3>Repair Done </h3>
+                                             <p><i class="far fa-clock"></i> Apr 03,2024 03:10PM</p>
+                                             <h4>Status Changed</h4>
+                                             <h5>File Submission In Progress &nbsp; <i
+                                                   class="fas fa-long-arrow-alt-right"></i> &nbsp; <span>Case
+                                                   Settled</span></h5>
+                                             <h6><i class="fas fa-user-alt"></i> &nbsp;Bhushan Nagdeve &nbsp; <span><i
+                                                      class="fas fa-headphones-alt"></i> &nbsp;Bhushan Nagdeve</span>
+                                             </h6>
+                                          </div>
+                                          <div class="wuinfo-card mt-4">
+                                             <h3>Case Closure <span>Latest</span></h3>
+                                             <p><i class="far fa-clock"></i> Apr 03,2024 03:10PM</p>
+                                             <h4>Status Changed</h4>
+                                             <h5>File Submission In Progress &nbsp; <i
+                                                   class="fas fa-long-arrow-alt-right"></i> &nbsp; <span>Case
+                                                   Settled</span></h5>
+                                             <h6><i class="fas fa-user-alt"></i> &nbsp;Bhushan Nagdeve &nbsp; <span><i
+                                                      class="fas fa-headphones-alt"></i> &nbsp;Bhushan Nagdeve</span>
+                                             </h6>
+                                          </div>
+                                          <div class="wuinfo-card mt-4">
+                                             <h3>Case Closure </h3>
+                                             <p><i class="far fa-clock"></i> Apr 03,2024 03:10PM</p>
+                                             <h4>Status Changed</h4>
+                                             <h5>File Submission In Progress &nbsp; <i
+                                                   class="fas fa-long-arrow-alt-right"></i> &nbsp; <span>Case
+                                                   Settled</span></h5>
+                                             <h6><i class="fas fa-user-alt"></i> &nbsp;Bhushan Nagdeve &nbsp; <span><i
+                                                      class="fas fa-headphones-alt"></i> &nbsp;Bhushan Nagdeve</span>
+                                             </h6>
+                                          </div>
+                                          <div class="wuinfo-card mt-4">
+                                             <h3>Case Closure </h3>
+                                             <p><i class="far fa-clock"></i> Apr 03,2024 03:10PM</p>
+                                             <h4>Status Changed</h4>
+                                             <h5>File Submission In Progress &nbsp; <i
+                                                   class="fas fa-long-arrow-alt-right"></i> &nbsp; <span>Case
+                                                   Settled</span></h5>
+                                             <h6><i class="fas fa-user-alt"></i> &nbsp;Bhushan Nagdeve &nbsp; <span><i
+                                                      class="fas fa-headphones-alt"></i> &nbsp;Bhushan Nagdeve</span>
+                                             </h6>
+                                          </div>
+                                          <div class="wuinfo-card mt-4">
+                                             <h3>Case Closure </h3>
+                                             <p><i class="far fa-clock"></i> Apr 03,2024 03:10PM</p>
+                                             <h4>Status Changed</h4>
+                                             <h5>File Submission In Progress &nbsp; <i
+                                                   class="fas fa-long-arrow-alt-right"></i> &nbsp; <span>Case
+                                                   Settled</span></h5>
+                                             <h6><i class="fas fa-user-alt"></i> &nbsp;Bhushan Nagdeve &nbsp; <span><i
+                                                      class="fas fa-headphones-alt"></i> &nbsp;Bhushan Nagdeve</span>
+                                             </h6>
+                                          </div>
+                                          <div class="wuinfo-card mt-4">
+                                             <h3>Case Closure <span>Latest</span></h3>
+                                             <p><i class="far fa-clock"></i> Apr 03,2024 03:10PM</p>
+                                             <h4>Status Changed</h4>
+                                             <h5>File Submission In Progress &nbsp; <i
+                                                   class="fas fa-long-arrow-alt-right"></i> &nbsp; <span>Case
+                                                   Settled</span></h5>
+                                             <h6><i class="fas fa-user-alt"></i> &nbsp;Bhushan Nagdeve &nbsp; <span><i
+                                                      class="fas fa-headphones-alt"></i> &nbsp;Bhushan Nagdeve</span>
+                                             </h6>
+                                          </div>
+                                       </div>
+                                       <div class="col-sm-5 wuclaim-form">
+                                          <div class="form-group wumanage-form">
+                                             <label>Assignee</label>
+                                             <select class="form-control form-select" style="width: 100%;" required="">
+                                                <option selected="selected">Bhushan Nagdeve</option>
+                                                <option>Bhushan Nagdeve 1</option>
+                                                <option>Bhushan Nagdeve 2</option>
+                                             </select>
+                                          </div>
+                                          <div class="form-group wumanage-form mt-3">
+                                             <h5>Change Case Status</h5>
+                                             <label>Status</label>
+                                             <select class="form-control form-select" style="width: 100%;" required="">
+                                                <option selected="selected">Case Settles</option>
+                                                <option>Case Settles 1</option>
+                                             </select>
+                                             <div class="form-group mt-2">
+                                                <label>Comments</label>
+                                                <textarea class="form-control" rows="3"
+                                                   placeholder="Type ..."></textarea>
+                                             </div>
+                                             <div class=" wusubmit mt-3">
+                                                <button type="submit" class="btn btn-primary">Save</button>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+
+                  <div class="card mb-4 mt-4">
+
+                     <div class="card-body">
+
+                        <table id="datatablesSimple1" class="display nowrap" style="width:100%">
+                           <thead>
+                              <tr>
+                                 <th>Case ID</th>
+                                 <th>Claim ID</th>
+                                 <th>Policy Number</th>
+                                 <th>Claim Number</th>
+                                 <th>Reg. Number</th>
+                                 <th>Estimate Of Loss</th>
+                                 <th>TAT 1</th>
+                                 <th>TAT 2</th>
+                                 <th>TAT 3</th>
+                                 <th>Time to TAT</th>
+                                 <th>Status</th>
+
+                              </tr>
+                           </thead>
+
+                           <tbody>
+                              <tr>
+                                 <td>CSBTIVEX6</td>
+                                 <td>CRIXJM79</td>
+
+                                 <td>211200/31/2024/296862</td>
+                                 <td>160011/31/2025/00030015</td>
+                                 <td>MH340N7879</td>
+                                 <td>₹8510</td>
+                                 <td>0M</td>
+                                 <td>2M</td>
+                                 <td>0M</td>
+                                 <td>2h 59m TAT 3 Done</td>
+                                 <td>Case Status</td>
+                              </tr>
+                           </tbody>
+
+
+                        </table>
+
+
+                     </div>
+                  </div>
+                  <div class="row" style="padding-bottom: 20px;">
+                     <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                           <label>Selecte Document</label>
+                           <select class="form-control form-select" style="width: 100%;">
+                              <option selected="selected">Policy Form</option>
+                              <option>Alaska</option>
+                              <option>California</option>
+                              <option>Delaware</option>
+                              <option>Tennessee</option>
+                              <option>Texas</option>
+                              <option>Washington</option>
+                           </select>
+                        </div>
+                        <div class="wudocument mt-3 ">
+                           <iframe src="././assets/img/demo.pdf"></iframe>
+                        </div>
+                     </div>
+                     <div class="col-sm-6 col-12">
+                        <div class="card card-body wuform-scroll">
+                           <div class="row">
+                              <div class="col-sm-6 col-12">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Policy Number</label>
+                                    <input type="text" class="form-control" placeholder="Type Policy Number">
+                                 </div>
+                              </div>
+                              <div class="col-sm-6 col-12">
+                                 <div class="form-group">
+                                    <label>Estimated Loss - Amount*</label>
+                                    <input type="text" class="form-control" placeholder="Type Estimated Loss - Amount "
+                                       required>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Date Of Incident*</label>
+                                    <input type="date" class="form-control" placeholder="Code">
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <label>Place Of Incident </label>
+                                    <input type="text" class="form-control" placeholder="Type Place Of Incident">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <label>Driver Name </label>
+                                    <input type="text" class="form-control" placeholder="Type Place Of Incident">
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <label>Third Party Involved</label>
+                                    <select class="form-control form-select" style="width: 100%;" required>
+                                       <option selected="selected">No</option>
+                                       <option>Yes</option>
+                                    </select>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Third Party Details</label>
+                                    <input type="text" class="form-control" placeholder="Type Third Party Details">
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <label>Date Of Intimation To CMS</label>
+                                    <input type="date" class="form-control" placeholder="Select Date">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Survey Completion Date</label>
+                                    <input type="date" class="form-control" placeholder="Enter City">
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <label>Odometer Reading</label>
+                                    <input type="text" class="form-control" placeholder="Type Odometer Reading ">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Place Of Survey</label>
+                                    <select class="form-control form-select" style="width: 100%;">
+                                       <option selected="selected">Ai Repair Workshop</option>
+                                       <option>Workshop</option>
+                                       <option>Workshop2</option>
+                                       <option>Workshop3</option>
+                                       <option>Workshop4</option>
+                                       <option>Workshop5</option>
+                                       <option>Workshop6</option>
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <label>Panchanama been Carried Out</label>
+                                    <select class="form-control form-select" style="width: 100%;">
+                                       <option selected="selected">No</option>
+                                       <option>Yes</option>
+                                    </select>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Police Station Name</label>
+                                    <input type="text" class="form-control" placeholder="Type Police Station Name">
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <label>Police Intimation Copy</label>
+                                    <div class="input-group">
+                                       <div class="custom-file">
+                                          <input type="file" class="custom-file-input" id="exampleInputFile">
+                                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Police Documents Verified</label>
+                                    <select class="form-control form-select" style="width: 100%;">
+                                       <option selected="selected">No</option>
+                                       <option>Yes</option>
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <label>Type Of Loss</label>
+                                    <select class="form-control form-select" style="width: 100%;">
+                                       <option selected="selected">Own Damage</option>
+                                       <option>Own Damage 1</option>
+                                       <option>Own Damage 2</option>
+                                       <option>Own Damage 3</option>
+                                       <option>Own Damage 4</option>
+                                    </select>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-12">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Description Of Cause</label>
+                                    <textarea class="form-control" rows="3" placeholder="Type ..."></textarea>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>was Vehicle Parked During Incident?*</label>
+                                    <select class="form-control form-select" style="width: 100%;" required>
+                                       <option selected="selected">Yes</option>
+                                       <option>No</option>
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>FIR Lodged</label>
+                                    <select class="form-control form-select" style="width: 100%;" required>
+                                       <option selected="selected">No</option>
+                                       <option>Yes</option>
+                                    </select>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>FIR Copy</label>
+                                    <div class="input-group">
+                                       <div class="custom-file">
+                                          <input type="file" class="custom-file-input" id="exampleInputFile">
+                                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>FIR Number</label>
+                                    <input type="text" class="form-control" placeholder="Type Fir Number">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>FIR Date</label>
+                                    <input type="date" class="form-control" placeholder="Type Fir Number">
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Spot Survey Done (If Any)</label>
+                                    <select class="form-control form-select" style="width: 100%;" required="">
+                                       <option selected="selected">No</option>
+                                       <option>Yes</option>
+                                    </select>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Spot Survey Report</label>
+                                    <div class="input-group">
+                                       <div class="custom-file">
+                                          <input type="file" class="custom-file-input" id="exampleInputFile">
+                                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Satisfaction Voucher</label>
+                                    <div class="input-group">
+                                       <div class="custom-file">
+                                          <input type="file" class="custom-file-input" id="exampleInputFile">
+                                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Estimate Of Loss</label>
+                                    <div class="input-group">
+                                       <div class="custom-file">
+                                          <input type="file" class="custom-file-input" id="exampleInputFile">
+                                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Discharge Voucher</label>
+                                    <div class="input-group">
+                                       <div class="custom-file">
+                                          <input type="file" class="custom-file-input" id="exampleInputFile">
+                                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Claim Form</label>
+                                    <div class="input-group">
+                                       <div class="custom-file">
+                                          <input type="file" class="custom-file-input" id="exampleInputFile">
+                                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Insured Representative Attending Survey</label>
+                                    <div class="input-group">
+                                       <div class="custom-file">
+                                          <input type="file" class="custom-file-input" id="exampleInputFile">
+                                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Remarks About Claim Documentation</label>
+                                    <input type="date" class="form-control" placeholder="Founder In Order">
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <label>No Of People Travelling In Vechicle</label>
+                                    <input type="text" class="form-control" placeholder="Type....">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Peril Operated</label>
+                                    <select class="form-control form-select" style="width: 100%;">
+                                       <option selected="selected">By Accidental External Means</option>
+                                       <option>By Accidental External Means 1</option>
+                                       <option>By Accidental External Means 2</option>
+                                       <option>By Accidental External Means 3</option>
+                                       <option>By Accidental External Means 4</option>
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <label>Point Of Impact</label>
+                                    <select class="form-control form-select" style="width: 100%;">
+                                       <option selected="selected">Frontal Impact</option>
+                                       <option>Frontal Impact< 1</option>
+                                       <option>Frontal Impact< 2</option>
+                                       <option>Frontal Impact< 3</option>
+                                       <option>Frontal Impact< 4</option>
+                                    </select>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Zoho Ticket Id*</label>
+                                    <input type="date" class="form-control" placeholder="Founder In Order" required>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <label>Claim ID</label>
+                                    <input type="text" class="form-control" placeholder="Type....">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Final Survey Bill Report</label>
+                                    <input type="date" class="form-control" placeholder="Type Invoice ID">
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <label>Invoice Generation Date</label>
+                                    <input type="Date" class="form-control" placeholder="Type....">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-12">
+                                 <!-- text input -->
+                                 <div class="form-group">
+                                    <label>Additional Remarks (If Any)</label>
+                                    <textarea class="form-control" rows="3" placeholder="Type ..."></textarea>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6 col-12">
+                                 <a href="#"> <button class="btn btn-primary">Final Survay Documents
+                                       CheckList</button></a>
+                              </div>
+                              <div class="col-sm-6 col-12 wusubmit">
+                                 <button type="submit" class="btn btn-primary">Submit</button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+
+
+
+
+
+               </div>
+            </main>
+
+         </div>
+
+      </div>
+   </div>
+   <footer class="py-4 bg-light mt-auto" style="margin-left:80px">
+      <div class="container-fluid px-4">
+         <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; Your Insurance 2024</div>
+            <div>
+               <a href="#">Privacy Policy</a>
+               &middot;
+               <a href="#">Terms &amp; Conditions</a>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"></script>
+   <script src="js/scripts.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+      crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+   <script src="js/datatables-simple-demo.js"></script>
+
+   <script>
+      //             new DataTable('#datatablesSimple', {
+      //     layout: {
+      //         topStart: {
+      //             buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+      //         }
+      //     }
+      // });
+   </script>
+</body>
+
+</html>

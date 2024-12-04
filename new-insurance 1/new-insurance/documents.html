@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+   <meta name="description" content="" />
+   <meta name="author" content="" />
+   <title>New Claim Details</title>
+
+   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+   <link href="css/styles.css" rel="stylesheet" />
+
+   <style>
+      /* Initial style for the icon and text */
+      /* Initial style for the sidebar */
+      /* Initial style for the sidebar */
+      /* Sidebar styling */
+      #MiniLeftNav {
+         list-style: none;
+         margin-left: 20px;
+         padding: 0;
+         width: 30px;
+         /* Initially narrow width */
+         transition: width 0.3s ease;
+         /* Smooth transition for width change */
+         border: none;
+
+      }
+
+      #layoutSidenav_nav {
+         width: 80px;
+         overflow-y: visible;
+         /* Enables vertical scrolling */
+         height: 100vh;
+         /* Ensures it takes full viewport height */
+         position: fixed;
+         background-color: #212529;
+         padding: 0px;
+         /* Set a consistent background color */
+         /* Keeps the sidebar in place while scrolling the main content */
+      }
+
+      #layoutSidenav_nav::-webkit-scrollbar {
+         width: 8px;
+         /* Customize scrollbar width */
+      }
+
+      #layoutSidenav_nav::-webkit-scrollbar-thumb {
+         background-color: #888;
+         /* Customize scrollbar thumb color */
+         border-radius: 4px;
+         /* Rounded scrollbar thumb */
+      }
+
+      #layoutSidenav_nav::-webkit-scrollbar-thumb:hover {
+         background-color: #555;
+         /* Darker thumb color on hover */
+      }
+
+      #MiniLeftNav li {
+         margin: 20px 0;
+         padding: 0;
+         width: 48px;
+         /* Adjust the width for the icons */
+      }
+
+      /* Style for the anchor tags */
+      #MiniLeftNav li a {
+         display: block;
+         padding: 7px;
+         position: relative;
+         border: 1px #fff;
+         text-decoration: none;
+      }
+
+      .icon {
+         height: 20px;
+      }
+
+      /* Styling for the text span */
+      #MiniLeftNav span {
+         font-family: 'Raleway', sans-serif;
+         font-size: 14px;
+         font-weight: 400;
+         letter-spacing: 1px;
+         text-transform: uppercase;
+         position: absolute;
+         bottom: 0;
+         left: 50px;
+         /* Adjust position of text */
+         line-height: 38px;
+         overflow: hidden;
+         white-space: nowrap;
+         width: 0;
+         /* Initially hide the text */
+         padding: 0;
+         background-color: #fff;
+         color: #3d4f0c;
+         transition: width 0.3s ease, padding 0.3s ease;
+         /* Smooth transition */
+      }
+
+      /* Hover effect */
+      #MiniLeftNav a:hover span {
+         width: auto;
+         /* Show the text */
+         padding: 0 30px;
+         /* Add some padding */
+         background-color: rgba(31, 22, 22, 0.813);
+         color: white;
+      }
+
+      #sidenavAccordion {
+         padding: 0;
+         /* Remove any padding */
+      }
+
+      .sb-sidenav-menu {
+         margin: 0;
+         /* Remove margin */
+         padding: 0;
+         /* Remove padding */
+         display: flex;
+         flex-direction: column;
+         justify-content: flex-start;
+         /* Align items to the top */
+      }
+
+      /* Hover effect for icon */
+      #MiniLeftNav a:hover {
+         /* background-color: #f1f1f1;  */
+         /* Optional: Change background color of icon on hover */
+      }
+
+      /* Optional: Enlarge icon on hover */
+      #MiniLeftNav a:hover i {
+         font-size: 1rem;
+         /* Enlarge icon */
+      }
+
+      #MiniLeftNav .nav-link {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         padding: 10px 5px;
+         /* Adjust padding around the link */
+      }
+
+      #MiniLeftNav .nav-link .icon {
+         font-size: 20px;
+         /* Adjust icon size */
+         margin-bottom: 5px;
+         /* Reduce spacing between icon and text */
+      }
+
+      /* Optional: Smooth transition for the icon */
+      #MiniLeftNav i {
+         transition: font-size 0.3s ease;
+      }
+
+      /* Hover effect for anchor tag */
+      #MiniLeftNav a:hover {
+         text-decoration: none;
+      }
+
+      #MiniLeftNav .nav-item {
+         margin: 0;
+         /* Remove margin for list items */
+         padding: 5px 0;
+         /* Add consistent padding */
+         text-align: center;
+         /* Center icons horizontally */
+      }
+
+      /* Expanding the sidebar on hover */
+      #MiniLeftNav:hover {
+         width: 250px;
+         /* Expand the sidebar when hovered */
+      }
+   </style>
+
+   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="sb-nav-fixed">
+   <div>
+      <div id="layoutSidenav_content" style=" margin-left: 100px;">
+         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <!-- <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a> -->
+            <a href="#" class="brand-link navbar-brand ps-3">
+               <img src="././assets/img/logo.png" class="brand-image img-circle elevation-3" style="opacity: .8">
+               <span class="brand-text font-weight-light">Insurance Buddy</span>
+            </a>
+
+
+
+            <!-- Sidebar Toggle-->
+            <!-- <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                  class="fas fa-bars"></i></button> -->
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+               <div class="input-group">
+                  <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
+                     aria-describedby="btnNavbarSearch" />
+                  <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
+                        class="fas fa-search"></i></button>
+               </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                     data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                     <li><a class="dropdown-item" href="#!">Settings</a></li>
+                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                     <li>
+                        <hr class="dropdown-divider" />
+                     </li>
+                     <li><a class="dropdown-item" href="#!">Logout</a></li>
+                  </ul>
+               </li>
+            </ul>
+         </nav>
+         <div id="layoutSidenav"  style="margin-top: 60px;">
+            <div id="layoutSidenav_nav" style="width:80px">
+               <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="width:80px">
+                  <div class="sb-sidenav-menu" style="overflow-y:visible">
+                     <ul id="MiniLeftNav" class="nav">
+                        <li class="nav-item">
+                           <!-- <div class="user-panel mt-2 pb-3 mb-3 d-flex">
+                              <div class="image">
+                                 <img src="././assets/img/user.jpg" class="img-circle elevation-2">
+                              </div>
+                              <div class="info">
+                                 <a href="#" class="d-block">Neeraj Bhatija</a>
+                              </div>
+                           </div> -->
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="case-listing.html">
+                              <i class="fas fa-file-alt icon"></i>
+                              <span class="nav-text">Case Listing</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="new-view-case.html">
+                              <i class="fas fa-eye" style="height: 20px;"></i>
+                              <span class="nav-text">View Case</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="claim-details.html">
+                              <i class="fas fa-clipboard-list icon"></i>
+                              <span class="nav-text">Claim Details</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="insurer.html">
+                              <i class="fas fa-briefcase icon"></i>
+                              <span class="nav-text">Insurer</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="registration-certificate.html">
+                              <i class="fas fa-certificate icon"></i>
+                              <span class="nav-text">Registration Certificate</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="policy.html">
+                              <i class="fas fa-book icon"></i>
+                              <span class="nav-text">Policy</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="driving-license.html">
+                              <i class="fas fa-id-card icon"></i>
+                              <span class="nav-text">Driving License</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="documents.html">
+                              <i class="fas fa-folder-open icon"></i>
+                              <span class="nav-text">Document</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="kyc-document.html">
+                              <i class="fas fa-id-badge icon"></i>
+                              <span class="nav-text">KYC Document</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="repairer-information.html">
+                              <i class="fas fa-cogs icon"></i>
+                              <span class="nav-text">Repairer Information</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="communication.html">
+                              <i class="fas fa-comment-alt icon"></i>
+                              <span class="nav-text">Communication</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="assessment-report.html">
+                              <i class="fas fa-file-medical icon"></i>
+                              <span class="nav-text">Assessment Report</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </nav>
+            </div>
+         </div>
+         <main>
+            <div class="container-fluid px-4 mt-4">
+               <div class="row mt-4">
+                  <div class="col-sm-8 col-12">
+                     <h3>Document</h3>
+                  </div>
+               </div>
+               <div class="card card-body">
+                  <div class="row">
+                     <div class="col-sm-6">
+                        <!-- text input -->
+                        <div class="form-group">
+                           <label>Document Name</label>
+                           <input type="text" class="form-control" placeholder="Document Name">
+                        </div>
+                     </div>
+                     <div class="col-sm-6">
+                        <div class="form-group">
+                           <label> Upload file</label>
+                           <div class="input-group">
+                              <div class="custom-file">
+                                 <input type="file" class="custom-file-input" id="exampleInputFile">
+                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card-footer">
+                           <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                     </div>
+                     <div class="card card-body">
+                        <div class="row">
+                           <label> Case Photos</label>
+                           <br><br><br>
+                        </div>
+                     </div>
+
+                     <div class="card card-body">
+                        <div class="row">
+                           <label>Case PDF</label>
+                           <br><br><br>
+                        </div>
+                     </div>
+         </main>
+      </div>
+   </div>
+   <footer class="py-4 bg-light mt-auto"   style="margin-left: 100px;">
+      <div class="container-fluid px-4">
+         <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; Your Insurance 2024</div>
+            <div>
+               <a href="#">Privacy Policy</a>
+               &middot;
+               <a href="#">Terms &amp; Conditions</a>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"></script>
+   <script src="js/scripts.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+      crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+   <script src="js/datatables-simple-demo.js"></script>
+
+   <script>
+      //             new DataTable('#datatablesSimple', {
+      //     layout: {
+      //         topStart: {
+      //             buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+      //         }
+      //     }
+      // });
+   </script>
+</body>
+
+</html>
